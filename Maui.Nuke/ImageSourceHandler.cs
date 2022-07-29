@@ -1,13 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-
-using Foundation;
-
+﻿using Foundation;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using UIKit;
 
-using Xamarin.Forms;
 using Xamarin.Forms.Nuke;
-using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportImageSourceHandler(
     typeof(FileImageSource), typeof(ImageSourceHandler))]
