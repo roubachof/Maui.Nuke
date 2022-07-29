@@ -9,9 +9,9 @@
         <RootNamespace>Maui.Nuke</RootNamespace>
 
         <Product>$(AssemblyName) ($(TargetFramework))</Product>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-        <Version>1.0.0</Version>
+        <AssemblyVersion>10.3.1.0</AssemblyVersion>
+        <AssemblyFileVersion>10.3.1.0</AssemblyFileVersion>
+        <Version>10.3.1</Version>
         <PackOnBuild>true</PackOnBuild>
         <NeutralLanguage>en</NeutralLanguage>
 
@@ -29,8 +29,7 @@
         </PackageReleaseNotes>
 
         <Title>iOS Nuke native image caching library for Maui</Title>
-        <Summary>Maui.Nuke iOS native image caching solution for Maui without
-changing any line of your current project</Summary>
+        <Summary>Maui.Nuke iOS native image caching solution for Maui without changing any line of your current project</Summary>
 
         <Description>Nuke 10.3.1 (https://github.com/kean/Nuke/releases/tag/10.3.1) for Maui.
 
@@ -51,19 +50,14 @@ IMPORTANT: On iOS projects, call  Maui.Nuke.FormsHandler.Init() after Xamarin.Fo
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <FileVersion>1.0.0.0</FileVersion>
+        <FileVersion>10.3.1.0</FileVersion>
 
     </PropertyGroup>
-
-
 
     <ItemGroup>
         <PackageReference Include="Xamarin.Nuke">
             <Version>1.0.14</Version>
         </PackageReference>
-
-
-      <None Include="__Docs__\nuke_small.png" Pack="true" PackagePath="images\"/>
 
     </ItemGroup>
   </Project>

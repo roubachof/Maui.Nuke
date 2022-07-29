@@ -1,14 +1,32 @@
-﻿
-using Xamarin.Nuke;
+﻿using Foundation;
+using UIKit;
 
-namespace Xamarin.Forms.Nuke
+namespace Maui.Nuke;
+
+public static class NukeController
 {
-    public static class NukeController
+    public static Task<UIImage?> LoadImageAsync(NSUrl url, Action<string>? onFail)
     {
-        public static void ClearCache()
-        {
-            DataLoader.Shared.RemoveAllCachedResponses();
-            ImageCache.Shared.RemoveAll();
-        }
+        var tcs = new TaskCompletionSource<UIImage?>();
+
+        ImagePipeline.Shared.LoadImageWithUrl(
+            url,
+            (image, errorMessage) =>
+                {
+                    if (image == null)
+                    {
+                        onFail?.Invoke(errorMessage);
+                    }
+
+                    tcs.SetResult(image);
+                });
+
+        return tcs.Task;
+    }
+
+    public static void ClearCache()
+    {
+        DataLoader.Shared.RemoveAllCachedResponses();
+        ImageCache.Shared.RemoveAll();
     }
 }
