@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<profiler:ProfilerPage
+    x:Class="Benchmark.Views.HugeImagePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:profiler="clr-namespace:Benchmark.Profiler;assembly=Benchmark"
+    Title="Huge Images">
+    <ScrollView Padding="0">
+        <StackLayout x:Name="_stack">
+            <Label Text="Prepare for OOM and GC pauses" />
+        </StackLayout>
+    </ScrollView>
+</profiler:ProfilerPage>

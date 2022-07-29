@@ -1,4 +1,8 @@
-﻿namespace Benchmark;
+﻿using Benchmark.Profiler;
+using Benchmark.Views;
+using Maui.Nuke;
+
+namespace Benchmark;
 
 public partial class App : Application
 {
@@ -6,6 +10,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new NavigationPage (new MainPage ());
 	}
 }
