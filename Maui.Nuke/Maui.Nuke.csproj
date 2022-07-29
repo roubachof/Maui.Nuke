@@ -8,7 +8,10 @@
         <CodeAnalysisRuleSet>StyleCopRules.ruleset</CodeAnalysisRuleSet>
         <RootNamespace>Maui.Nuke</RootNamespace>
 
-        <Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
         <AssemblyVersion>10.3.1.0</AssemblyVersion>
         <AssemblyFileVersion>10.3.1.0</AssemblyFileVersion>
         <Version>10.3.1</Version>
