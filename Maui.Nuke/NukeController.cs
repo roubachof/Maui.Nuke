@@ -9,24 +9,26 @@ public static class NukeController
     {
         var tcs = new TaskCompletionSource<UIImage?>();
 
-        ImagePipeline.Shared.LoadImageWithUrl(
-            url,
-            (image, errorMessage) =>
-                {
-                    if (image == null)
-                    {
-                        onFail?.Invoke(errorMessage);
-                    }
+        //ImagePipeline.Shared.LoadImageWithUrl(
+        //    url,
+        //    (image, errorMessage) =>
+        //        {
+        //            if (image == null)
+        //            {
+        //                onFail?.Invoke(errorMessage);
+        //            }
 
-                    tcs.SetResult(image);
-                });
+        //            tcs.SetResult(image);
+        //        });
+
+        tcs.SetResult(null);
 
         return tcs.Task;
     }
 
     public static void ClearCache()
     {
-        DataLoader.Shared.RemoveAllCachedResponses();
-        ImageCache.Shared.RemoveAll();
+        //DataLoader.Shared.RemoveAllCachedResponses();
+        //ImageCache.Shared.RemoveAll();
     }
 }

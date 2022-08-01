@@ -1,6 +1,8 @@
 ﻿using Benchmark.Profiler;
 using Maui.Nuke;
 
+using Microsoft.Extensions.Logging;
+
 namespace Benchmark;
 
 public static class MauiProgram
@@ -16,6 +18,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			})
 			.ConfigureNuke();
+
+		builder.Logging.AddDebug();
 
 		// Uncomment for XF only test
         // MemoryProfiler.Instance = new MemoryProfiler("Maui", null);

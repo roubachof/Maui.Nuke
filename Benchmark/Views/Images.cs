@@ -21,7 +21,7 @@ public static class Images
 		switch (modulo) {
 			//Urls
 			case 0:
-				return ImageSource.FromUri (new Uri ("https://growtix-melupufoagt.stackpathdns.com/media/big//34/28/23/5a9f03c2-3734-4486-bd04-2d45ac1c102e.png"));
+				return ImageSource.FromUri (new Uri ("https://s3.amazonaws.com/app.growtix.com/media/big/34/28/23/5a9f03c2-3734-4486-bd04-2d45ac1c102e.png"));
 			case 1:
 				return ImageSource.FromUri (new Uri ("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Steven_Seagal_November_2016.jpg/230px-Steven_Seagal_November_2016.jpg"));
 			case 2:

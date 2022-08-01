@@ -3,27 +3,8 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Xamarin.Forms.Nuke Sample">
-    <StackLayout Padding="20">
-        <Grid ColumnDefinitions="*,*,*" RowDefinitions="20,40,20,100,60">
-
-            <Label Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   FontSize="12"
-                   Text="PDF" />
-            <Label Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   FontSize="12"
-                   Text="Catalog" />
-            <Label Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   FontSize="12"
-                   Text="Resources" />
+    <StackLayout Padding="20" Spacing="10" >
+        <Grid ColumnDefinitions="*,*,*" RowDefinitions="20,40,20,100,60" ColumnSpacing="10">
 
             <!--  Test edge cases  -->
             <Image Grid.Row="0"
@@ -70,6 +51,25 @@
                    VerticalOptions="Center"
                    Source="dotnet_bot.png" />
 
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="12"
+                   Text="PDF" />
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="12"
+                   Text="Catalog" />
+            <Label Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="12"
+                   Text="Resources" />
+            
             <Label Grid.Row="2"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
@@ -90,6 +90,7 @@
                    Grid.ColumnSpan="2"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
+                   HeightRequest="80"
                    IsAnimationPlaying="True"
                    Source="holygrail.gif" />
 
@@ -98,6 +99,7 @@
                    Grid.ColumnSpan="2"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
+                   HeightRequest="80"
                    IsAnimationPlaying="True"
                    Source="https://i.pinimg.com/originals/94/9b/f6/949bf6697db43904f1da1deab6938e7c.gif" />
 
@@ -107,12 +109,14 @@
                     Grid.ColumnSpan="2"
                     Margin="0,10"
                     VerticalOptions="End"
+                    HorizontalOptions="Center"
                     Clicked="ClearCache_Clicked"
                     Text="CLEAR CACHE" />
             <Button Grid.Row="4"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Margin="0,10"
+                    HorizontalOptions="Center"
                     VerticalOptions="End"
                     Clicked="CheckPoint_Clicked"
                     Text="CHECKPOINT" />

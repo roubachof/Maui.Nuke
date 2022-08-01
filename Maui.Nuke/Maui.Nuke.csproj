@@ -17,7 +17,9 @@
         <Version>10.3.1</Version>
         <PackOnBuild>true</PackOnBuild>
         <NeutralLanguage>en</NeutralLanguage>
-
+	</PropertyGroup>
+	
+	<PropertyGroup>
         <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 
         <LangVersion>latest</LangVersion>
@@ -54,13 +56,9 @@ IMPORTANT: On iOS projects, call  Maui.Nuke.FormsHandler.Init() after Xamarin.Fo
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <FileVersion>10.3.1.0</FileVersion>
-
     </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Xamarin.Nuke">
-            <Version>1.0.14</Version>
-        </PackageReference>
-
-    </ItemGroup>
+	<ItemGroup>
+		<None Include="..\__Docs__\nuke_small.png" Pack="true" PackagePath="\images\" />
+	</ItemGroup>
   </Project>
