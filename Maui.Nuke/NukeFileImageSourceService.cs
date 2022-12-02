@@ -1,5 +1,7 @@
-﻿using Foundation;
+﻿using CoreFoundation;
+using Foundation;
 using Microsoft.Extensions.Logging;
+using System.Data.SqlTypes;
 using UIKit;
 
 namespace Maui.Nuke;
@@ -81,9 +83,19 @@ internal class NukeFileImageSourceService: ImageSourceService, IImageSourceServi
             return null;
         }
 
-        var image = await NukeController.LoadImageAsync(
-            fileUrl, 
-            (errorMessage) => _logger.Warn($"Fail to load image: {fileUrl.AbsoluteString}, innerError: {errorMessage}"));
+        UIImage? image;
+        try
+        {
+            _logger.Debug(() => $"Loading \"{fileUrl}\" as a web URL");
+            image = await NukeController.LoadImageAsync(
+                fileUrl, 
+                (errorMessage) => _logger.Warn($"Fail to load image: {fileUrl.AbsoluteString}, innerError: {errorMessage}"));
+        }
+        catch (Exception e)
+        {
+            _logger.Error($"Fail to load image: {fileUrl.AbsoluteString}", e);
+            return null;
+        }
 
         if (image == null)
         {

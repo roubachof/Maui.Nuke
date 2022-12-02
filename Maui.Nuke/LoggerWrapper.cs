@@ -25,4 +25,9 @@ internal class LoggerWrapper
     {
         _logger?.LogWarning(message);
     }
+
+    public void Error(string message, Exception exception)
+    {
+        _logger?.LogError(exception, message);
+    }
 }

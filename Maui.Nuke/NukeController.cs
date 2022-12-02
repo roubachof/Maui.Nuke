@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using UIKit;
 
+using Xamarin.Nuke;
+
 namespace Maui.Nuke;
 
 public static class NukeController
@@ -9,17 +11,21 @@ public static class NukeController
     {
         var tcs = new TaskCompletionSource<UIImage?>();
 
-        //ImagePipeline.Shared.LoadImageWithUrl(
-        //    url,
-        //    (image, errorMessage) =>
-        //        {
-        //            if (image == null)
-        //            {
-        //                onFail?.Invoke(errorMessage);
-        //            }
+        var pipeline = new ImagePipeline();
 
-        //            tcs.SetResult(image);
-        //        });
+        // ImagePipeline.Shared.LoadImageWithUrl(
+
+        pipeline.LoadImageWithUrl(
+            url,
+            (image, errorMessage) =>
+                {
+                    if (image == null)
+                    {
+                        onFail?.Invoke(errorMessage);
+                    }
+
+                    tcs.SetResult(image);
+                });
 
         tcs.SetResult(null);
 
@@ -28,7 +34,7 @@ public static class NukeController
 
     public static void ClearCache()
     {
-        //DataLoader.Shared.RemoveAllCachedResponses();
-        //ImageCache.Shared.RemoveAll();
+        DataLoader.Shared.RemoveAllCachedResponses();
+        ImageCache.Shared.RemoveAll();
     }
 }

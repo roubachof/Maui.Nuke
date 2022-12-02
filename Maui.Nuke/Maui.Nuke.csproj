@@ -61,4 +61,8 @@ IMPORTANT: On iOS projects, call  Maui.Nuke.FormsHandler.Init() after Xamarin.Fo
 	<ItemGroup>
 		<None Include="..\__Docs__\nuke_small.png" Pack="true" PackagePath="\images\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="ImageCaching.Nuke" Version="2.0.0" />
+	</ItemGroup>
   </Project>

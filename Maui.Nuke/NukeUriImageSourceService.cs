@@ -39,10 +39,19 @@ public class NukeUriImageSourceService : ImageSourceService, IImageSourceService
             return null;
         }
 
-        _logger.Debug(() => $"Loading \"{urlString}\" as a web URL");
-        var image = await NukeController.LoadImageAsync(
-            nsUrl, 
-            (errorMessage) => _logger.Warn($"Fail to load image: {nsUrl.AbsoluteString}, innerError: {errorMessage}"));
+        UIImage? image;
+        try
+        {
+            _logger.Debug(() => $"Loading \"{urlString}\" as a web URL");
+            image = await NukeController.LoadImageAsync(
+                nsUrl, 
+                (errorMessage) => _logger.Warn($"Fail to load image: {nsUrl.AbsoluteString}, innerError: {errorMessage}"));
+        }
+        catch (Exception e)
+        {
+            _logger.Error($"Fail to load image: {nsUrl.AbsoluteString}", e);
+            return null;
+        }
 
         if (image == null)
         {
