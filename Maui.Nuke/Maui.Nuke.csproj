@@ -24,25 +24,26 @@
 
         <LangVersion>latest</LangVersion>
 
+		<PackageId>Sharpnado.Maui.Nuke</PackageId>
         <PackageProjectUrl>https://github.com/roubachof/Maui.Nuke</PackageProjectUrl>
         <RepositoryUrl>https://github.com/roubachof/Maui.Nuke</RepositoryUrl>
         <PackageIcon>images/nuke_small.png</PackageIcon>
+		<PackageReadmeFile>docs/ReadMe.md</PackageReadmeFile>
         <PackageTags>maui netmaui xamarin.forms ios nuke image caching glidex</PackageTags>
 
         <PackageReleaseNotes>
             First .Net 6 (MAUI) release \o/
         </PackageReleaseNotes>
 
-        <Title>iOS Nuke native image caching library for Maui</Title>
+        <Title>iOS Nuke native image caching library for dotnet Maui</Title>
         <Summary>Maui.Nuke iOS native image caching solution for Maui without changing any line of your current project</Summary>
 
-        <Description>Nuke 10.3.1 (https://github.com/kean/Nuke/releases/tag/10.3.1) for Maui.
+        <Description>Nuke 10.3.1 for Maui.
 
-This repository was inspired by Jonathan Peppers GlideX implementation of the IImageViewHandler interface for Xamarin.Forms (https://github.com/jonathanpeppers/glidex).
+Since MAUI, the Android platform get a native caching library: Glide.
+Unfortunately on, iOS, there is no native caching...
 
-Its goal is to provide the same kind of implementation for iOS with nuke, a native image caching library, achieving a complete image caching solution for MAUI: you don't have to change any line of your existing project, the MAUI image source handlers will just be overridden with cache-enabled ones.
-
-IMPORTANT: On iOS projects, call  Maui.Nuke.FormsHandler.Init() after Xamarin.Forms.Forms.Init() and before LoadApplication(new App()).
+Sharpnado.Maui.Nuke is here to repair this injustice by implementing image caching with the fastest and most popular ios native caching library: Nuke.
         </Description>
 
         <Owners>Jean-Marie Alfonsi</Owners>
@@ -60,6 +61,7 @@ IMPORTANT: On iOS projects, call  Maui.Nuke.FormsHandler.Init() after Xamarin.Fo
 
 	<ItemGroup>
 		<None Include="../__Docs__/nuke_small.png" Pack="true" PackagePath="/images/" />
+		<None Include="ReadMe.md" Pack="true" PackagePath="/docs/" />
 	</ItemGroup>
 
 	<ItemGroup>

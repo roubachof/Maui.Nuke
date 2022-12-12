@@ -1,73 +1,53 @@
-# Xamarin.Forms.Nuke
+# Maui.Nuke
 
 <p align="left"><img src="__Docs__/nuke_big.png" height="180"/>
 
-[Nuke](https://github.com/kean/Nuke/) image caching library for Xamarin.Forms.
+[Nuke](https://github.com/kean/Nuke/) image caching library for dotnet MAUI.
 
 Get it from NuGet:
 
-[![Nuget](https://img.shields.io/nuget/v/Xamarin.Forms.Nuke.svg)](https://www.nuget.org/packages/xamarin.forms.nuke)
+[![Nuget](https://img.shields.io/nuget/v/Sharpnado.Maui.Nuke.svg)](https://www.nuget.org/packages/sharpnado.maui.nuke)
 
-This repository was inspired by Jonathan Peppers ```GlideX``` implementation of the new ```IImageViewHandler``` interface for ```Xamarin.Forms``` (https://github.com/jonathanpeppers/glidex).
+Since MAUI, the `Android` platform get a native caching library: `Glide`.
+Unfortunately on, `iOS`, there is no native caching...
 
-Its goal is to provide the same kind of implementation for ```iOS```, achieving a complete image caching solution for ```Xamarin.Forms```: you don't have to change any line of your existing project, the ```Xamarin.Forms``` image source handlers will just be overridden with cache-enabled ones.
+`Maui.Nuke` is here to repair this injustice by implementing image caching with the fastest and most popular ios native caching library: [Nuke](https://github.com/kean/Nuke/).
+
+Moreover, once installed, it is completly transparent to the user, you use your `Image` views just like before, all the work is done under the hood.
+
+This project is using the [NukeProxy](https://github.com/roubachof/NukeProxy) library, which is a Swift .net6 proxy to the nuke native library. The new binding and the packaging has been done by the great @cheesebaron. Hail to the Cheese!
+
+Current version of the Nuke library is 10.3.1.
 
 ## Installation
 
-### Xamarin.Forms.Nuke
-
-
-1. Install https://www.nuget.org/packages/xamarin.forms.nuke/ in your xamarin forms **iOS** project
-2. Add this Init method after ```Forms.Init``` call:
-
 ```csharp
-Xamarin.Forms.Forms.Init();
-Xamarin.Forms.Nuke.FormsHandler.Init(debug: false);
-LoadApplication(new App());
+public static MauiApp CreateMauiApp()
+{
+    var builder = MauiApp.CreateBuilder();
+    builder
+        .UseMauiApp<App>()
+        .UseNuke(showDebugLogs: false);
+}
 ```
 
-### GlideX.Forms
-
-1. Install https://www.nuget.org/packages/glidex.forms/ in your xamarin forms **Android** project
-2. Add this one liner after your app's ```Forms.Init``` call:
-
-```csharp
-Xamarin.Forms.Forms.Init (this, bundle);
-//This forces the custom renderers to be used
-Android.Glide.Forms.Init (this);
-LoadApplication (new App ());
-```
 
 ### BOOM
 
-You just achieved **90%+** memory reduction when manipulating ```Image``` views on **both** platforms.
-
-
-## Support for iOS < 12.2
-
-As specified here: https://docs.microsoft.com/en-us/xamarin/ios/platform/binding-swift/walkthrough#consume-the-binding-library
-
-You need to add the [Xamarin.iOS.SwiftRuntimeSupport NuGet package](https://www.nuget.org/packages/Xamarin.iOS.SwiftRuntimeSupport/) to your target project if you want to support iOS 12.1 and earlier.
-Please read the above doc to submit an app with such support.
+You just achieved **90%+** memory reduction when manipulating ```Image``` views.
 
 
 ## Known Issues
 
-`Xamarin.Forms.Nuke` cannot cache images coming from the Asset Catalog:
+`Maui.Nuke` cannot cache images coming from the Asset Catalog:
 
 https://docs.microsoft.com/en-us/xamarin/ios/app-fundamentals/images-icons/displaying-an-image
 
 This is due to the fact that the `Asset Catalogue` is packed in the ipa, and you cannot get an image URI from it.
 Since version 8.4.1, it will however cache correctly images respecting the density convention (@2x, @3x) locating in your `Resources` folder (see [Issue #13](https://github.com/roubachof/Xamarin.Forms.Nuke/issues/13)).
 
-However, if you still have some issues with your local images, you can disable Xamarin.Forms.Nuke for all `FileImageSource` by setting the `disableFileImageSourceHandling` parameter of the `FormsHandler.Init` to `true`:
-```csharp
-Xamarin.Forms.Forms.Init();
-Xamarin.Forms.Nuke.FormsHandler.Init(debug: false, disableFileImageSourceHandling: true);
-LoadApplication(new App());
-```
 
-## Benchmark
+## Benchmark (old one)
 
 I changed a bit the ```glidex``` benchmark samples to have a more fair comparison. I switched from a random distribution of the images to a deterministic one to be sure we are comparing the same data set.
 

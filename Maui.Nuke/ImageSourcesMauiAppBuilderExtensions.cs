@@ -5,7 +5,7 @@ namespace Maui.Nuke;
 
 public static class ImageSourcesMauiAppBuilderExtensions
 {
-    public static MauiAppBuilder ConfigureNuke(this MauiAppBuilder builder, bool showDebugLogs = false)
+    public static MauiAppBuilder UseNuke(this MauiAppBuilder builder, bool showDebugLogs = false)
 	{
 #if __IOS__
 		NukeController.ShowDebugLogs = showDebugLogs;
