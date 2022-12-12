@@ -17,7 +17,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			})
-			.ConfigureNuke();
+			.ConfigureNuke(showDebugLogs: true);
 
 		builder.Logging.AddDebug();
 

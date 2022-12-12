@@ -26,7 +26,7 @@
 
         <PackageProjectUrl>https://github.com/roubachof/Maui.Nuke</PackageProjectUrl>
         <RepositoryUrl>https://github.com/roubachof/Maui.Nuke</RepositoryUrl>
-        <PackageIcon>images\nuke_small.png</PackageIcon>
+        <PackageIcon>images/nuke_small.png</PackageIcon>
         <PackageTags>maui netmaui xamarin.forms ios nuke image caching glidex</PackageTags>
 
         <PackageReleaseNotes>
@@ -59,7 +59,7 @@ IMPORTANT: On iOS projects, call  Maui.Nuke.FormsHandler.Init() after Xamarin.Fo
     </PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\__Docs__\nuke_small.png" Pack="true" PackagePath="\images\" />
+		<None Include="../__Docs__/nuke_small.png" Pack="true" PackagePath="/images/" />
 	</ItemGroup>
 
 	<ItemGroup>

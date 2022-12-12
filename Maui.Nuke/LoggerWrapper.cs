@@ -13,8 +13,14 @@ internal class LoggerWrapper
 
     public void Debug(Func<string> messageFunc)
     {
-        if (_logger == null || !_logger.IsEnabled(LogLevel.Debug))
+        if (_logger == null)
         {
+            return;
+        }
+
+        if (NukeController.ShowDebugLogs)
+        {
+            _logger.LogInformation(messageFunc());
             return;
         }
 

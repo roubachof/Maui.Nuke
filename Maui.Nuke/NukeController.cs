@@ -7,15 +7,13 @@ namespace Maui.Nuke;
 
 public static class NukeController
 {
+    public static bool ShowDebugLogs { get; set; }
+
     public static Task<UIImage?> LoadImageAsync(NSUrl url, Action<string>? onFail)
     {
         var tcs = new TaskCompletionSource<UIImage?>();
 
-        var pipeline = new ImagePipeline();
-
-        // ImagePipeline.Shared.LoadImageWithUrl(
-
-        pipeline.LoadImageWithUrl(
+        ImagePipeline.Shared.LoadImageWithUrl(
             url,
             (image, errorMessage) =>
                 {
@@ -26,8 +24,6 @@ public static class NukeController
 
                     tcs.SetResult(image);
                 });
-
-        tcs.SetResult(null);
 
         return tcs.Task;
     }
