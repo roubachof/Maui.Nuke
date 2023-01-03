@@ -12,9 +12,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
 
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-        <AssemblyVersion>10.3.1.0</AssemblyVersion>
-        <AssemblyFileVersion>10.3.1.0</AssemblyFileVersion>
-        <Version>10.3.1</Version>
+        <AssemblyVersion>10.11.2.0</AssemblyVersion>
+        <AssemblyFileVersion>10.11.2.0</AssemblyFileVersion>
+        <Version>10.11.2</Version>
         <PackOnBuild>true</PackOnBuild>
         <NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
@@ -38,7 +38,7 @@
         <Title>iOS Nuke native image caching library for dotnet Maui</Title>
         <Summary>Maui.Nuke iOS native image caching solution for Maui without changing any line of your current project</Summary>
 
-        <Description>Nuke 10.3.1 for Maui.
+        <Description>Nuke 10 for Maui.
 
 Since MAUI, the Android platform get a native caching library: Glide.
 Unfortunately on, iOS, there is no native caching...
@@ -56,7 +56,7 @@ Sharpnado.Maui.Nuke is here to repair this injustice by implementing image cachi
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <FileVersion>10.3.1.0</FileVersion>
+        <FileVersion>10.11.2.0</FileVersion>
     </PropertyGroup>
 
 	<ItemGroup>
@@ -65,6 +65,6 @@ Sharpnado.Maui.Nuke is here to repair this injustice by implementing image cachi
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ImageCaching.Nuke" Version="2.0.0" />
+	  <PackageReference Include="ImageCaching.Nuke" Version="2.0.13" />
 	</ItemGroup>
   </Project>
