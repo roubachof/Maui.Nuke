@@ -1,7 +1,6 @@
-﻿using Foundation;
+using Foundation;
+using ImageCaching.Nuke;
 using UIKit;
-
-using Xamarin.Nuke;
 
 namespace Maui.Nuke;
 
@@ -30,7 +29,6 @@ public static class NukeController
 
     public static void ClearCache()
     {
-        DataLoader.Shared.RemoveAllCachedResponses();
         ImageCache.Shared.RemoveAll();
     }
 }

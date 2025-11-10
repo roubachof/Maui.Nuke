@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 		..\ReadMe.md = ..\ReadMe.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "..\TestApp\TestApp.csproj", "{631797A7-E9B7-44DA-A40D-3E0CD8F1A82F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{53CEBAD3-E622-4A15-8C5C-4FAD5D389E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53CEBAD3-E622-4A15-8C5C-4FAD5D389E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53CEBAD3-E622-4A15-8C5C-4FAD5D389E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{631797A7-E9B7-44DA-A40D-3E0CD8F1A82F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631797A7-E9B7-44DA-A40D-3E0CD8F1A82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631797A7-E9B7-44DA-A40D-3E0CD8F1A82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631797A7-E9B7-44DA-A40D-3E0CD8F1A82F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
