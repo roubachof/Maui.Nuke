@@ -15,9 +15,9 @@ Unfortunately on, `iOS`, there is no native caching...
 
 Moreover, once installed, it is completly transparent to the user, you use your `Image` views just like before, all the work is done under the hood.
 
-This project is using the [NukeProxy](https://github.com/roubachof/NukeProxy) library, which is a Swift .net6 proxy to the nuke native library. The new binding and the packaging has been done by the great @cheesebaron. Hail to the Cheese!
+This project is using the [NukeProxy](https://github.com/roubachof/NukeProxy) library, which is a Swift .net9 proxy to the nuke native library. The new binding and the packaging has been done by the great @cheesebaron. Hail to the Cheese!
 
-Current version of the Nuke library is 10.3.1.
+Current version of the Nuke library is 12.8.0.
 
 ## Installation
 
