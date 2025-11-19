@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿#if IOS || MACCATALYST
+using Foundation;
 using Microsoft.Extensions.Logging;
 using UIKit;
 
@@ -58,6 +59,7 @@ public class NukeUriImageSourceService : ImageSourceService, IImageSourceService
             return null;
         }
 
-        return new ImageSourceServiceResult(image!, () => image.Dispose());
+        return new ImageSourceServiceResult(image, () => image.Dispose());
     }
 }
+#endif

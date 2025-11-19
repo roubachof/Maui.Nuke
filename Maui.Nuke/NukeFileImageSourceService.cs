@@ -1,7 +1,6 @@
-﻿using CoreFoundation;
+﻿#if IOS || MACCATALYST
 using Foundation;
 using Microsoft.Extensions.Logging;
-using System.Data.SqlTypes;
 using UIKit;
 
 namespace Maui.Nuke;
@@ -102,6 +101,7 @@ internal class NukeFileImageSourceService: ImageSourceService, IImageSourceServi
             return null;
         }
 
-        return new ImageSourceServiceResult(image!, () => image.Dispose());
+        return new ImageSourceServiceResult(image, () => image.Dispose());
     }
 }
+#endif

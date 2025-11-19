@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿#if IOS || MACCATALYST
+using Microsoft.Extensions.Logging;
 
 namespace Maui.Nuke;
 
@@ -37,3 +38,4 @@ internal class LoggerWrapper
         _logger?.LogError(exception, message);
     }
 }
+#endif

@@ -1,31 +1,30 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace Maui.Nuke;
 
 public static class ImageSourcesMauiAppBuilderExtensions
 {
-    public static MauiAppBuilder UseNuke(this MauiAppBuilder builder, bool showDebugLogs = false)
+    public static MauiAppBuilder UseNuke(
+	    this MauiAppBuilder builder,
+	    bool cacheOnlyRemoteImages = false,
+	    bool showDebugLogs = false)
 	{
-#if __IOS__
+#if IOS || MACCATALYST
 		NukeController.ShowDebugLogs = showDebugLogs;
 		builder.ConfigureImageSources(services =>
 		{
-			services.AddService(
-				svcs => new NukeFileImageSourceService(
-					svcs.GetService<ILogger<FileImageSourceService>>()));
+			if (!cacheOnlyRemoteImages)
+			{
+				services.AddService(svcs =>
+					new NukeFileImageSourceService(svcs.GetService<ILogger<FileImageSourceService>>()));
+				services.AddService<FileImageSource>(svcs =>
+					new NukeFileImageSourceService(svcs.GetService<ILogger<FileImageSourceService>>()));
+			}
 
-			services.AddService(
-				svcs => new NukeUriImageSourceService(
-					svcs.GetService<ILogger<UriImageSourceService>>()));
-
-			services.AddService<FileImageSource>(
-				svcs => new NukeFileImageSourceService(
-					svcs.GetService<ILogger<FileImageSourceService>>()));
-
-			services.AddService<UriImageSource>(
-				svcs => new NukeUriImageSourceService(
-					svcs.GetService<ILogger<UriImageSourceService>>()));
+			services.AddService(svcs =>
+				new NukeUriImageSourceService(svcs.GetService<ILogger<UriImageSourceService>>()));
+			services.AddService<UriImageSource>(svcs =>
+				new NukeUriImageSourceService(svcs.GetService<ILogger<UriImageSourceService>>()));
 		});
 #endif
 		return builder;

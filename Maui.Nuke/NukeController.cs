@@ -1,3 +1,4 @@
+#if IOS || MACCATALYST
 using Foundation;
 using ImageCaching.Nuke;
 using UIKit;
@@ -32,3 +33,4 @@ public static class NukeController
         ImageCache.Shared.RemoveAll();
     }
 }
+#endif
