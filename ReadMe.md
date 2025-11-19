@@ -27,7 +27,9 @@ public static MauiApp CreateMauiApp()
     var builder = MauiApp.CreateBuilder();
     builder
         .UseMauiApp<App>()
+#if IOS ||  MACCATALYST
         .UseNuke(showDebugLogs: false);
+#endif
 }
 ```
 
