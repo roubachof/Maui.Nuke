@@ -7,11 +7,13 @@ Unfortunately on, `iOS`, there is no native caching...
 
 Moreover, once installed, it is completly transparent to the user, you use your `Image` views just like before, all the work is done under the hood.
 
-This project is using the [NukeProxy](https://github.com/roubachof/NukeProxy) library, which is a Swift .net6 proxy to the nuke native library. The new binding and the packaging has been done by the great @cheesebaron. Hail to the Cheese!
+This project is using the [NukeProxy](https://github.com/roubachof/NukeProxy) library, which is a Swift proxy to the nuke native library. The new binding and the packaging has been done by the great @cheesebaron. Hail to the Cheese!
 
-Current version of the Nuke library is 10.3.1.
+Current version of the Nuke library is **12.8**.
 
 ## Installation
+
+### Basic Setup
 
 ```csharp
 public static MauiApp CreateMauiApp()
@@ -19,15 +21,73 @@ public static MauiApp CreateMauiApp()
     var builder = MauiApp.CreateBuilder();
     builder
         .UseMauiApp<App>()
-        .UseNuke(showDebugLogs: false);
+        .UseSharpnadoNuke(loggerEnable: false);
+    
+    return builder.Build();
 }
 ```
+
+### Advanced Configuration
+
+```csharp
+public static MauiApp CreateMauiApp()
+{
+    var builder = MauiApp.CreateBuilder();
+    builder
+        .UseMauiApp<App>()
+        .UseSharpnadoNuke(
+            loggerEnable: true,                    // Enable logging
+            cacheOnlyRemoteImages: true);          // Cache only HTTP/HTTPS images (v12.8.1+)
+    
+    return builder.Build();
+}
+```
+
+### Configuration Options
+
+- **`loggerEnable`** (default: `false`): Enable debug logging for troubleshooting
+- **`cacheOnlyRemoteImages`** (default: `false`, since v12.8.1): When `true`, only caches remote images (HTTP/HTTPS), excludes local `file://` URIs
 
 
 ### BOOM
 
-You just achieved **90%+** memory reduction when manipulating ```Image``` views.
+You just achieved **90%+** memory reduction when manipulating ```Image``` views on iOS and MacCatalyst.
 
+## Platform Support
+
+Since version 12.8.1, `Maui.Nuke` compiles for all MAUI platforms for easier integration:
+
+| Platform | Nuke Caching | Behavior |
+|----------|--------------|----------|
+| **iOS 15.0+** | ✅ Active | Full Nuke 12.8 native caching |
+| **MacCatalyst 15.0+** | ✅ Active | Full Nuke 12.8 native caching |
+| **Android API 21+** | ❌ No-op | Uses MAUI's built-in Glide (already excellent) |
+| **Windows 10.0.17763.0+** | ❌ No-op | Uses MAUI's built-in caching |
+
+**Why multi-platform compilation?**
+- Single package for all platforms (no conditional `PackageReference`)
+- Simplified project setup
+- Future-ready for potential enhancements
+
+## Use Cases for `cacheOnlyRemoteImages`
+
+The `cacheOnlyRemoteImages: true` option (v12.8.1+) is useful when:
+
+✅ **You want to cache only network images** (HTTP/HTTPS)
+- Saves disk space by not caching bundled/local images
+- Focuses cache on images that are slow to load
+
+❌ **Skip caching for local images** (`file://` URIs)
+- Local images from Resources folder
+- Bundled images
+- Embedded images
+
+Example:
+```csharp
+.UseSharpnadoNuke(
+    loggerEnable: false,
+    cacheOnlyRemoteImages: true)  // Only cache HTTP/HTTPS images
+```
 
 ## Known Issues
 
