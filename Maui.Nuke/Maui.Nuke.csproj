@@ -16,9 +16,9 @@
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 
         <Product>$(AssemblyName) ($(TargetFramework))</Product>
-        <AssemblyVersion>12.8.1</AssemblyVersion>
-        <AssemblyFileVersion>12.8.1</AssemblyFileVersion>
-        <Version>12.8.1</Version>
+        <AssemblyVersion>12.8.2</AssemblyVersion>
+        <AssemblyFileVersion>12.8.2</AssemblyFileVersion>
+        <Version>12.8.2</Version>
         <PackOnBuild>true</PackOnBuild>
         <NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
@@ -36,19 +36,19 @@
         <PackageTags>maui netmaui xamarin.forms ios nuke image caching glidex</PackageTags>
 
         <PackageReleaseNotes>
-            v12.8.1 - Multi-Platform Support (November 2025)
+            v12.8.2 - Image Invalidation Fix (November 2025)
             
-            NEW FEATURES:
-            ✨ Now compiles for all platforms (Android, Windows, iOS, MacCatalyst)
-            ✨ Added option to cache only remote images (excludes local file:// URIs)
-            ✨ Improved logging with better platform detection
+            BUG FIX:
+            🐛 Fixed MAUI's lack of image invalidation with custom NukeImageHandler
+            🐛 Images now properly refresh when source changes
             
-            PLATFORM CHANGES:
-            * iOS/MacCatalyst: Full Nuke 12.8 caching (native)
-            * Android: Compiles but uses MAUI's built-in Glide (no-op)
-            * Windows: Compiles but uses MAUI's built-in caching (no-op)
+            IMPROVEMENTS:
+            ✨ Custom image handler for iOS/MacCatalyst
+            ✨ Better image lifecycle management
             
-            Note: Nuke caching is iOS/MacCatalyst only. Other platforms compile for compatibility but delegate to MAUI defaults.
+            SAMPLES:
+            * Test apps upgraded to .NET 10
+            * Benchmark project updated
         </PackageReleaseNotes>
 
         <Title>iOS Nuke native image caching library for dotnet Maui</Title>
@@ -72,7 +72,7 @@ Sharpnado.Maui.Nuke is here to repair this injustice by implementing image cachi
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <FileVersion>12.8.1</FileVersion>
+        <FileVersion>12.8.2</FileVersion>
     </PropertyGroup>
 
 	<ItemGroup>
