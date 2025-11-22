@@ -59,7 +59,8 @@ public class NukeUriImageSourceService : ImageSourceService, IImageSourceService
             return null;
         }
 
-        return new ImageSourceServiceResult(image, () => image.Dispose());
+        var scaledImage = new UIImage(image.CGImage!, scale, image.Orientation);
+        return new ImageSourceServiceResult(image, () => scaledImage.Dispose());
     }
 }
 #endif

@@ -101,7 +101,8 @@ internal class NukeFileImageSourceService: ImageSourceService, IImageSourceServi
             return null;
         }
 
-        return new ImageSourceServiceResult(image, () => image.Dispose());
+        var scaledImage = new UIImage(image.CGImage!, scale, image.Orientation);
+        return new ImageSourceServiceResult(image, () => scaledImage.Dispose());
     }
 }
 #endif

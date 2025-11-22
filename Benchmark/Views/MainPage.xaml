@@ -118,7 +118,7 @@
         <Button Clicked="GridOnlyRemote_Clicked" Text="Grid Only Remote Example" />
         <Button Clicked="Grid_Clicked" Text="Grid Example" />
         <Button Clicked="Edge_Clicked" Text="Edge Cases" />
-        <Button Clicked="ViewCell_Clicked" Text="ViewCells" />
+        <Button Clicked="ViewCell_Clicked" Text="CollectionView" />
         <Button Clicked="ImageCell_Clicked" Text="ImageCells" />
         <Button Clicked="HugeImage_Clicked" Text="Huge Images" />
         <Button Clicked="ToggleImages_Clicked" Text="Toggle Images" />
