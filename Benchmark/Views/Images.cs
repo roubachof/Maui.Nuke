@@ -25,7 +25,7 @@ public static class Images
 			case 1:
 				return ImageSource.FromUri (new Uri ("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Steven_Seagal_November_2016.jpg/230px-Steven_Seagal_November_2016.jpg"));
 			case 2:
-				return ImageSource.FromUri (new Uri ("https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_80%2Cw_300/MTIwNjA4NjM0MDQyNzQ2Mzgw/hulk-hogan-9542305-1-402.jpg"));
+				return ImageSource.FromUri (new Uri ("https://upload.wikimedia.org/wikipedia/commons/0/0e/Hulk_Hogan.jpg"));
 			//Resources
 			case 3:
 			case 4:

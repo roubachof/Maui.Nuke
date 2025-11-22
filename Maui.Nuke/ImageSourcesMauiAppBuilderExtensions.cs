@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Handlers;
 
 namespace Maui.Nuke;
 
@@ -11,6 +12,19 @@ public static class ImageSourcesMauiAppBuilderExtensions
 	{
 #if IOS || MACCATALYST
 		NukeController.ShowDebugLogs = showDebugLogs;
+		
+		// Register custom ImageHandler that fixes layout invalidation for custom ImageSourceServices
+		builder.ConfigureMauiHandlers(handlers =>
+		{
+			handlers.AddHandler<Image, NukeImageHandler>();
+		});
+		
+		// Override the MapSource to use our custom implementation
+		NukeImageHandler.Mapper.ModifyMapping(nameof(Microsoft.Maui.IImage.Source), (handler, view, _) =>
+		{
+			NukeImageHandler.MapSource(handler, view);
+		});
+		
 		builder.ConfigureImageSources(services =>
 		{
 			if (!cacheOnlyRemoteImages)
