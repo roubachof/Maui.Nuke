@@ -21,7 +21,7 @@ public static MauiApp CreateMauiApp()
     var builder = MauiApp.CreateBuilder();
     builder
         .UseMauiApp<App>()
-        .UseSharpnadoNuke(loggerEnable: false);
+        .UseNuke(loggerEnable: false);
     
     return builder.Build();
 }
