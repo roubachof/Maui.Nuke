@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
 
 namespace Maui.Nuke;
@@ -19,10 +19,38 @@ public static class ImageSourcesMauiAppBuilderExtensions
 			handlers.AddHandler<Image, NukeImageHandler>();
 		});
 		
-		// Override the MapSource to use our custom implementation
+		// Override the MapSource to use our custom implementation with PlatformView null safety.
+		// 
+		// IMPORTANT: ViewHandler<T>.PlatformView throws InvalidOperationException when the
+		// native view is disconnected (e.g., during fast scrolling, navigation, tab switching).
+		// We guard against this at the mapper level as a defense-in-depth measure.
+		//
+		// See: https://github.com/dotnet/maui/issues/17165
+		//      https://github.com/dotnet/maui/issues/17569
+		//      https://github.com/roubachof/Maui.Nuke/issues/11
 		NukeImageHandler.Mapper.ModifyMapping(nameof(Microsoft.Maui.IImage.Source), (handler, view, _) =>
 		{
-			NukeImageHandler.MapSource(handler, view);
+			// Safe check: use base IElementHandler.PlatformView which returns null
+			// instead of ViewHandler<T>.PlatformView which throws
+			if (((IElementHandler)handler).PlatformView is null)
+			{
+				System.Diagnostics.Debug.WriteLine(
+					"[Maui.Nuke] Skipping MapSource - PlatformView is null (handler disconnected)");
+				return;
+			}
+
+			try
+			{
+				NukeImageHandler.MapSource(handler, view);
+			}
+			catch (InvalidOperationException ex) when (ex.Message.Contains("PlatformView cannot be null"))
+			{
+				// Race condition: PlatformView became null between our check and the actual access.
+				// This is expected during fast scrolling in CollectionViews, navigation transitions,
+				// tab switching in Shell, and CarPlay/background transitions.
+				System.Diagnostics.Debug.WriteLine(
+					$"[Maui.Nuke] PlatformView disconnected during MapSource (race condition, expected): {ex.Message}");
+			}
 		});
 		
 		builder.ConfigureImageSources(services =>
